@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package grpc;
+
+option go_package = "learn/grpc";
+
+service GrpcServerService {
+  rpc CreateEntity(Entity) returns (EntityResponse);
+  rpc UpdateEntity(EntityId) returns (EntityResponse);
+  rpc GetEntity(Entity) returns (EntityResponse);
+  rpc DeleteEntity(EntityId) returns (Empty);
+}
+
+message Entity {
+  string id = 1;
+  string name = 2;
+  string  description = 3;
+}
+
+message EntityId {
+  string id = 1;
+}
+
+message EntityResponse {
+  string id = 1;
+  string message = 2;
+}
+
+message Empty {}
